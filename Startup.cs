@@ -38,6 +38,11 @@ namespace Retrozilla
             });
             
             app.UseSignalR(routes => routes.MapHub<RetroZillaHub>("/retroZillaHub"));
+
+            app.Run(async context => 
+            {
+                await context.Response.WriteAsync("Its work!");
+            });
         }
     }
 }
