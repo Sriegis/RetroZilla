@@ -11,8 +11,6 @@ namespace Retrozilla
 {
     public class Startup
     {
-        private readonly string _allowedOrigins = "AllowedOrigins";
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
@@ -36,8 +34,7 @@ namespace Retrozilla
                     .WithOrigins("http://localhost:3000")
                     .AllowAnyHeader()
                     .AllowAnyMethod()
-                    .AllowCredentials()
-                    ;
+                    .AllowCredentials();
             });
             
             app.UseSignalR(routes => routes.MapHub<RetroZillaHub>("/retroZillaHub"));
