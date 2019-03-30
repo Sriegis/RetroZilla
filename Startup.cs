@@ -31,18 +31,13 @@ namespace Retrozilla
             app.UseCors(builder => 
             {
                 builder
-                    .WithOrigins("http://localhost:3000")
+                    .WithOrigins("http://localhost:3000", "https://retrozilla.azurewebsites.net/")
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials();
             });
             
             app.UseSignalR(routes => routes.MapHub<RetroZillaHub>("/retroZillaHub"));
-
-            app.Run(async context => 
-            {
-                await context.Response.WriteAsync("Its work!");
-            });
         }
     }
 }
